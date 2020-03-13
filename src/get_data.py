@@ -15,7 +15,7 @@ jdata = r.json()
 features = [f["attributes"] for f in jdata["features"]]
 features = [{ "DateOfReport":  datetime.utcfromtimestamp(f["DateOfReport"] / 1000).strftime("%Y-%m-%d"),
     "ADM0_VIZ_NAME": f["ADM0_VIZ_NAME"], 
-    "Short_Name_ZH": f["Short_Name_ZH"],
+    "Short_Name_ZH": f["Short_Name_ZH"] or f["ADM0_VIZ_NAME"],
     "cum_conf": f["cum_conf"],
     "cum_death": f["cum_death"] } for f in features]
 
